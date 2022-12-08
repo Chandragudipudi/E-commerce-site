@@ -1,0 +1,337 @@
+CREATING TABLES:
+
+Creation:
+
+Customer Table:
+create table customer(
+customer_id varchar(10),
+passwd varchar(10) not null, 
+first name varchar(10) not null,
+last name varchar(10),
+mobile bigint (12) not null, 
+address varchar(50),
+email varchar(25) not null,
+constraint pk primary key(customer_id));
+
+Insertion:
+
+insert into customer values('c1','123’,’narasimha’, ‘raju’,8074413313,'dfefd’,narasimha@gmail.com');
+insert into customer value(‘c2’,’asds’,’anand', ‘venkata’,8500573177,'dfgfgh’,’anand@gmail.com');
+insert into customer values('c3', '678', 'sai’, ‘karthik’, 9491211999, 'ertytr', 'karthik@gmail.com');
+
+
+
+
+Category Table:
+
+Creation:
+
+create table category(
+cat_id varchar(10),
+cat_title varchar(10) not null,
+dress id varchar(10) not null,
+constraint pk primary key(cat_id),
+constraint fki foreign key(dress_id) references dress(dress_id));
+
+Insertion:
+
+insert into category values('cl', 'kids', 'd1’); 
+insert into category values('c2', 'mens', 'd2'); 
+insert into category values('c3', 'teenagers', 'd3’); 
+
+
+Dress Table:
+
+Creation:
+
+Create table dress(
+Dress_id varchar(10),
+Dress_title varchar(20) not null,
+Dress_price int check(dress_price>0), 
+Dress_colour varchar(10) not null,
+Dress_desc varchar(50),
+Dress_size varchar(10) not null,
+Constraint pk primary key(Dress_id));
+
+Insertion:
+
+insert into dress values('d1', shirt, 100, 'yellow', 'good silky shirt', 's'); 
+insert into dress values('d3', 'jean_phant, 200, 'blue', 'torn Jeans","L"); 
+insert into dress values(d2', 't-shirt, 300, 'red', 'v coloured', 'XL'); 
+
+Cart Table:
+
+Creation:
+
+Create table cart(
+cart_id varchar(10),
+items int not null check(items>0),
+total cost int not null check (total_cost>0),
+customer_id varchar(10) not null,
+dress_id varchar(10) not null,
+constraint fk6 foreign key(customer_id) references customer (customer_id),
+constraint fk7 foreign key (Dress_id) references dress (Dress_id),
+constraint pk primary key(cart_id));
+
+Insertion:
+
+insert into cart values('cart1',1,100, 'c1', '1'); 
+insert into cart values('cart2',1,200, 'c2', 'd2');
+insert into cart values('cart3',1,300, 'c3', 'd3');
+
+Payment Table:
+
+Creation:
+
+create table payment(
+payment id varchar(10),
+charges int not null check(charges>0),
+payment type varchar(15) not null,
+final amount int not null check(final_amount>0),
+customer_id varchar(10) not null, 
+cart id varchar(10) not null,
+constraint pk primary key(payment_id),
+constraint fk9 foreign key (customer_id) references customer (customer_id),
+constraint fk10 foreign key(cart_id) references cart(cart_id));
+
+Insertion:
+
+insert into payment values ('pl',1,'cod',101, 'c1', 'cart1'); 
+insert into payment values('p2',2, 'debitcard',202, 'c2', 'cart2"); 
+insert into payment values('p3', 3, 'netbanking', 303, 'c3', 'cart3'); 
+
+Orders Table:
+
+Creation:
+
+Create table orders(
+customer id varchar(10) not null, 
+Dress id varchar(10) not null,
+order id varchar(10),
+address varchar(50),
+constraint fk4 foreign key (customer_id) references customer (customer_id),
+constraint fk5 foreign key (Dress_id) references dress(Dress_id),
+constraint pk primary key(order_id));
+
+Insertion:
+
+insert into orders values("c1","d1","01","dfddf"); 
+insert into orders values("c2", "d2', '02", "fgffighgf");
+insert into orders values("c3', 'd3",’o3’,’gfdgh’);
+
+
+
+
+
+OrderFrom Table:
+
+Creation:
+
+Create table orderfrom(
+customer_id varchar(10) not null,
+Sid varchar(10) not null,
+Constraint fk2 foreign key (customer_id) references customer (customer_id),
+Constraint fk3 foreign key (Sid) references shop(Sid)); 
+
+Insertion:
+insert into orderfrom values('c1', '1');
+insert into orderfrom values('c2', 's2');
+insert into order from values('c3', 's3');
+
+Brand Table:
+
+Creation:
+
+create table brand(
+brand id varchar(10),
+brand title varchar(10) not null,
+dress id varchar(10) not null,
+Constraint pk primary key (brand_id),
+Constraint fk foreign key(dress_id) references dress(dress_id));
+
+Insertion:
+
+insert into brand values('b1", "coool', 'd1");
+insert into brand values('b2", "hero", "d2');
+insert into brand values("b3", "roadster", "d3");
+
+
+Shop Table:
+
+Creation:
+
+create table shop( 
+Sname varchar(20) not null,
+Sid varchar(20),
+Saddress varchar(50),
+Semail varchar(25),
+Constraint pk primary key(Sid));
+
+Insertion:
+
+insert into shop values(‘aaa’,’s1’,’dfdfgf’,s1@gmail.com’);
+insert into shop values('bbb", "s2', 'dfgfds", "s2@gmail.com");
+insert into shop values('ccc', '3', 'bvdfgf', 's3@gmail.com");
+
+
+Implementation:
+
+Select * from shop;
+Select last_name from customer where mobile=‟8500573177‟;
+Select customer_id from cart where items=3;Select cart_id from cart where customer_id=‟c1‟;
+Select cart_id from cart where customer_id=‟c1‟;
+Select last_name from customer where mobile=‟9011233111‟;
+Select count(*) from cart where items<‟3‟;
+Select count(*) from customer where address=‟hyderabad‟;
+Select cat_id from category where cat_title=‟mens‟ or cat_title=‟punjabi‟;
+Select upper(llast_name) from customer;
+Select sin(mobile) as SIN_VALUE from customer where first_name=‟anand‟;
+Select first_name,length(first_name)as length from customer;
+Select cos(mobile) as COSINE_VALUE from customer where customer_id=‟c3‟;
+Select address from customer where customer_id=‟c5‟;
+Select first name,mobile from customer where first_name like‟a%‟;
+Select first_name from customer where customer.customer_id=‟c1‟;
+
+
+USING JOIN OPERATOR:
+
+FULL OUTER JOIN:
+
+Select first_name from customer full outer join orders on
+customer.customerid=orders.customer_id;
+
+INNER JOIN:
+
+Select orders.order_id,customer.first_name from orders inner join customer on orders.customer_id=customer.customer_id;
+Select payment.payment_id,customer.first_name,customer.last_name from payment inner join customer on payment.customer_id=customer.customer_id;
+
+FULL OUTER JOIN:
+
+Select mobile,address from customer full outer join payment on
+customer.customer_id=payment.customer_id;
+
+
+
+LEFT JOIN:
+
+Select customer.first_name,customer.last_name,orders.order_id from customer LEFT JOIN orders on customer.customer_id=orders.customer_id;
+
+RIGHT JOIN:
+
+Select customer.first_name,customer.mobile,payment.payment_type,payment.charges from customer right join payment on customer.customer_id=payment.customer_id;
+
+
+PLSQL QUIRES EXECUTION
+
+Write a PL/SQL program to practice reading the record from a table into local variables using different data types and %TYPE and display the same using locally declared variables
+
+set serveroutput on;
+declare
+c_no customers.customer_id&type;
+fname customers.firstname type;
+name customers.last name%type;
+mob_no customers.mobile%type;
+pass customers.passwdt%ype; 
+begin
+select customer_id,first_name, lastname, mobile,passwd into c_no,f_name,1_ name,
+mob_no,pass from customers where customer_id= 'c1';
+dbms_output.put_line('customer_id : „ || c_no);
+dbms_output.put_line('first_name : „ || f_name);
+dbms_output.put_line(„last_name : „ || l_name);
+dbms_output.put_line(„mobile : „||mob_no);
+dbms_output.put_line('passwd: „ || pass);
+end; 
+
+PL/SQL program to insert records into any of the table.
+
+begin
+insert into customers values('c4', '900', 'jagan', 'reddy', '9014979439',‟dubai‟); insert into
+customers values(„c5','333','lokesh', 'babu', 9123456234',‟america‟);
+end;
+
+Creating a function customer to find the customer_id in the given address. Use the address name as the input parameter for the function.
+
+create or replace function st_count (address varchar) return number is
+CNT number;
+Begin
+select count(address) into CNT from customers where customers.address= address;
+return CNT;
+end;
+declare
+address varchar(20);
+a_count number;
+begin
+address:='dubai';
+a_count:=st_count(address);
+dbms_output.put_line ('no of customers from dubai is '||a_count);
+end;
+
+
+USING CURSORS
+
+CURSOR to give 5% additional discount to all payment_id’s whose final amount>101
+
+set serveroutput on;
+declare
+cursor pay is select payment_id, amount from payment;
+PID payment.payment_id%type;
+amount number;
+begin
+open pay;
+loop
+fetch pay into PID, amount;
+exit when pay%not found;
+if amount>101 then
+update payment set discout=discout+5 where payment_id=PID;
+end if;
+end lo;
+close pay;
+end;
+
+
+Getting the customer_id and name of the customers from tabe using implicit cursor and use ROWCOUNT
+
+set serveroutput on
+declare
+c_id customer.customer_id%type;
+c_name customer.last_name%type;
+cursor cus_cursor is
+select customer_id, last_name
+from customer;
+begin
+open cus_cursor;
+fetch cus_cursor into c_id, c_name;
+exit when cus_cursor%ROWCOUNT>5 or cus_cursor%NOTFOUND;
+dbms_output.put_line(c_id || ':' || c_name);
+end loop;
+close cus_cursor;
+end;
+
+USAGE OF FUNCTIONS AND PROCEDURES
+
+PL/SQL stored procedure to adjust the payment type of orders to CASH if
+the payment_id and amount details given as input.
+set serveroutput on
+Create or replace procedure payment_udate
+(pay_id in payment,payment_id%type,amount in payments.final_amount%type);
+Is
+Begin
+Update payments set payment = „cash‟ where payment_id=pay_id and final_amount=amount;
+End payment_update; 
+
+USING TRIGGERS
+
+Trigger to find and fill the age of a customer whenever a customer record is
+inserted into customer table.
+
+create or replace function get_age(cDOB date) return number is
+begin
+return floor(months_between(sysdate,cDOB)/12);
+end;
+create or replace trigger age before insert or update on customer
+For each row
+Begin
+new.age := get_age(: new.dob);
+End;
+
+
